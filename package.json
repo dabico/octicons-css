@@ -1,0 +1,46 @@
+{
+  "name": "octicons-css",
+  "version": "19.0.0",
+  "description": "GitHub Octicons now in CSS",
+  "type": "commonjs",
+  "scripts": {
+    "clean": "rm -rf icons dist",
+    "lint": "npx eslint index.js",
+    "generate": "node index.js"
+  },
+  "files": [
+    "dist",
+    "icons"
+  ],
+  "keywords": [
+    "GitHub",
+    "icons",
+    "css",
+    "octicons"
+  ],
+  "author": {
+    "name": "Ozren Dabić",
+    "email": "dabico@usi.ch",
+    "url": "https://dabico.github.io/"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/dabico/octicons-css#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dabico/octicons-css.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dabico/octicons-css/issues"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "axios-retry": "^3.4.0",
+    "cli-progress": "^3.12.0",
+    "fantasticon": "^2.0.0",
+    "glob": "^10.2.2",
+    "list-github-dir-content": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.35.0"
+  }
+}

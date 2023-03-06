@@ -6,6 +6,7 @@
   "main": "index.js",
   "style": "index.css",
   "scripts": {
+    "lint": "npx eslint index.js",
     "generate": "node index.js"
   },
   "keywords": [
@@ -30,5 +31,8 @@
   },
   "dependencies": {
     "fantasticon": "^2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.35.0"
   }
 }

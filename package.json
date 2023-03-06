@@ -2,9 +2,11 @@
   "name": "octicons-css",
   "version": "18.0.0",
   "description": "GitHub Octicons now in CSS",
+  "type": "module",
+  "main": "index.js",
   "style": "index.css",
   "scripts": {
-    "build": "exit 1"
+    "generate": "node index.js"
   },
   "keywords": [
     "GitHub",
@@ -25,5 +27,8 @@
   },
   "bugs": {
     "url": "https://github.com/dabico/octicons-css/issues"
+  },
+  "dependencies": {
+    "fantasticon": "^2.0.0"
   }
 }

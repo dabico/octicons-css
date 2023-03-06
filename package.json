@@ -3,8 +3,6 @@
   "version": "18.0.0",
   "description": "GitHub Octicons now in CSS",
   "type": "module",
-  "main": "index.js",
-  "style": "index.css",
   "scripts": {
     "lint": "npx eslint index.js",
     "generate": "node index.js"

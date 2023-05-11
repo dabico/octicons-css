@@ -7,9 +7,9 @@ Including the icons in your own website is easy, just add either one (or all) of
 
 ```html
 <!-- 12px icon set -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/octicons-css/dist/octicons-12/octicons.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/octicons-css/octicons/octicons-12/octicons.css">
 <!-- 16px icon set -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/octicons-css/dist/octicons-16/octicons.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/octicons-css/octicons/octicons-16/octicons.css">
 <!-- 24px icon set -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/octicons-css/dist/octicons-24/octicons.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/octicons-css/octicons/octicons-24/octicons.css">
 ```

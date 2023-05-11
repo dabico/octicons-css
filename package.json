@@ -9,8 +9,7 @@
     "generate": "node index.js"
   },
   "files": [
-    "dist",
-    "icons"
+    "dist"
   ],
   "keywords": [
     "GitHub",

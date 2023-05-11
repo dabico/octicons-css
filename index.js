@@ -108,7 +108,7 @@ async function organizeIcons(...sizes) {
 
 async function generateCSS(...sizes) {
     await Promise.all(
-        sizes.map(async size => fs.mkdir(`./dist/octicons-${size}/fonts`, {recursive: true}))
+        sizes.map(async size => fs.mkdir(`./octicons/octicons-${size}/fonts`, {recursive: true}))
     );
     console.info("Generating CSS stylesheets...");
     const options = {hideCursor: true, format: "{bar} {percentage}% | ETA: {eta}s | {value}/{total}"};
@@ -117,7 +117,7 @@ async function generateCSS(...sizes) {
     await Promise.all(
         sizes.map(async size => {
             const inRoot = `./icons/${size}`;
-            const outRoot = `./dist/octicons-${size}`;
+            const outRoot = `./octicons/octicons-${size}`;
             const fontRoot = `${outRoot}/fonts`;
             const options = {
                 inputDir: inRoot,
@@ -138,7 +138,7 @@ async function generateCSS(...sizes) {
 
 Promise.resolve()
     .then(() => setup())
-    .then(() => cleanup("dist", "icons"))
+    .then(() => cleanup("octicons", "icons"))
     .then(() => downloadIcons())
     .then(() => organizeIcons(12, 16, 24))
     .then(() => generateCSS(12, 16, 24))

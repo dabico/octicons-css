@@ -4,12 +4,12 @@
   "description": "GitHub Octicons now in CSS",
   "type": "commonjs",
   "scripts": {
-    "clean": "rm -rf icons dist",
+    "clean": "rm -rf icons octicons",
     "lint": "npx eslint index.js",
     "generate": "node index.js"
   },
   "files": [
-    "dist"
+    "octicons"
   ],
   "keywords": [
     "GitHub",

@@ -1,3 +1,6 @@
+### Project Build template
+octicons/
+
 ### VisualStudioCode template
 .vscode/*
 !.vscode/settings.json

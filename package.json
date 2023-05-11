@@ -5,7 +5,7 @@
   "type": "commonjs",
   "scripts": {
     "clean": "rm -rf icons octicons",
-    "lint": "npx eslint index.js",
+    "lint": "eslint index.js",
     "generate": "node index.js"
   },
   "files": [

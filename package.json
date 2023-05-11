@@ -4,7 +4,7 @@
   "description": "GitHub Octicons now in CSS",
   "type": "commonjs",
   "scripts": {
-    "clean": "rm -rf icons octicons",
+    "clean": "rm -rf icons octicons octicons.tar.gz",
     "lint": "eslint index.js",
     "generate": "node index.js"
   },

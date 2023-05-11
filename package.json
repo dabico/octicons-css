@@ -31,15 +31,13 @@
   "bugs": {
     "url": "https://github.com/dabico/octicons-css/issues"
   },
-  "dependencies": {
+  "devDependencies": {
     "axios": "^1.4.0",
     "axios-retry": "^3.4.0",
     "cli-progress": "^3.12.0",
+    "eslint": "^8.35.0",
     "fantasticon": "^2.0.0",
-    "glob": "^10.2.2",
+    "glob": "^10.2.3",
     "list-github-dir-content": "^3.0.0"
-  },
-  "devDependencies": {
-    "eslint": "^8.35.0"
   }
 }

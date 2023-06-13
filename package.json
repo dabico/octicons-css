@@ -33,11 +33,11 @@
   },
   "devDependencies": {
     "axios": "^1.4.0",
-    "axios-retry": "^3.4.0",
+    "axios-retry": "^3.5.0",
     "cli-progress": "^3.12.0",
-    "eslint": "^8.35.0",
+    "eslint": "^8.42.0",
     "fantasticon": "^2.0.0",
-    "glob": "^10.2.3",
+    "glob": "^10.2.7",
     "list-github-dir-content": "^3.0.0"
   }
 }

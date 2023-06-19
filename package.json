@@ -9,7 +9,9 @@
     "generate": "node index.js"
   },
   "files": [
-    "octicons"
+    "fonts",
+    "octicons.css",
+    "octicons.min.css"
   ],
   "keywords": [
     "GitHub",

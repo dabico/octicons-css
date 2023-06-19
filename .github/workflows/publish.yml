@@ -19,6 +19,10 @@ jobs:
         run: npm clean-install
       - name: Generate CSS files
         run: npm run generate
+      - name: Prepare files
+        run: |
+          mkdir octicons
+          cp -r fonts octicons.css octicons.min.css README.md LICENSE octicons/
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:

@@ -24,8 +24,8 @@
     fill: currentColor;
     overflow: visible;
 }
-
 {{# each codepoints }}
+
 .{{ ../prefix }}-{{ @key }}:before {
     content: "\\{{ codepoint this }}";
 }

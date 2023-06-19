@@ -1,5 +1,8 @@
 ### Project Build template
+fonts/
 octicons/
+octicons.css
+octicons.min.css
 octicons.tar.gz
 
 ### VisualStudioCode template

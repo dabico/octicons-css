@@ -1,15 +1,17 @@
 {
   "name": "octicons-css",
-  "version": "19.2.0",
+  "version": "19.3.0",
   "description": "GitHub Octicons now in CSS",
   "type": "commonjs",
   "scripts": {
-    "clean": "rm -rf icons octicons octicons.tar.gz",
+    "clean": "rm -rf icons fonts octicons.css octicons.min.css",
     "lint": "eslint index.js",
     "generate": "node index.js"
   },
   "files": [
-    "octicons"
+    "fonts",
+    "octicons.css",
+    "octicons.min.css"
   ],
   "keywords": [
     "GitHub",
@@ -34,10 +36,10 @@
   "devDependencies": {
     "axios": "^1.4.0",
     "axios-retry": "^3.5.0",
+    "clean-css": "^5.3.2",
     "cli-progress": "^3.12.0",
     "eslint": "^8.42.0",
     "fantasticon": "^2.0.0",
-    "glob": "^10.2.7",
     "list-github-dir-content": "^3.0.0"
   }
 }

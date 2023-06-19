@@ -37,7 +37,6 @@
     "cli-progress": "^3.12.0",
     "eslint": "^8.42.0",
     "fantasticon": "^2.0.0",
-    "glob": "^10.2.7",
     "list-github-dir-content": "^3.0.0"
   }
 }

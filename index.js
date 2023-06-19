@@ -2,6 +2,7 @@ const fs = require("node:fs/promises");
 const axios = require("axios");
 const retry = require("axios-retry");
 const ghls = require("list-github-dir-content");
+const CleanCSS = require("clean-css");
 const {Presets, SingleBar} = require("cli-progress");
 const {FontAssetType, OtherAssetType, generateFonts} = require("fantasticon");
 
@@ -96,9 +97,21 @@ async function generateCSS() {
     progressbar.stop();
 }
 
+async function minimizeCSS() {
+    console.info("Minimizing CSS stylesheet...");
+    const options = {hideCursor: true, format: "{bar} {percentage}% | ETA: {eta}s"};
+    const progressbar = new SingleBar(options, Presets.shades_classic);
+    progressbar.start(1, 0);
+    const result = await new CleanCSS({returnPromise: true}).minify(["./octicons/octicons.css"]);
+    await fs.writeFile("./octicons/octicons.min.css", result.styles, {flag: "w+"});
+    progressbar.increment();
+    progressbar.stop();
+}
+
 Promise.resolve()
     .then(() => setup())
     .then(() => cleanup("octicons", "icons"))
     .then(() => downloadIcons())
     .then(() => generateCSS())
+    .then(() => minimizeCSS())
     .then(() => cleanup("icons"));

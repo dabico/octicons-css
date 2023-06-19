@@ -75,13 +75,13 @@ async function downloadIcons() {
 }
 
 async function generateCSS() {
-    await fs.mkdir("./octicons/fonts", {recursive: true});
+    await fs.mkdir("./fonts", {recursive: true});
     console.info("Generating CSS stylesheet...");
     const options = {hideCursor: true, format: "{bar} {percentage}% | ETA: {eta}s"};
     const progressbar = new SingleBar(options, Presets.shades_classic);
     progressbar.start(1, 0);
     const inRoot = "./icons";
-    const outRoot = "./octicons";
+    const outRoot = ".";
     const fontRoot = `${outRoot}/fonts`;
     await generateFonts({
         inputDir: inRoot,
@@ -102,15 +102,15 @@ async function minimizeCSS() {
     const options = {hideCursor: true, format: "{bar} {percentage}% | ETA: {eta}s"};
     const progressbar = new SingleBar(options, Presets.shades_classic);
     progressbar.start(1, 0);
-    const result = await new CleanCSS({returnPromise: true}).minify(["./octicons/octicons.css"]);
-    await fs.writeFile("./octicons/octicons.min.css", result.styles, {flag: "w+"});
+    const result = await new CleanCSS({returnPromise: true}).minify(["./octicons.css"]);
+    await fs.writeFile("./octicons.min.css", result.styles, {flag: "w+"});
     progressbar.increment();
     progressbar.stop();
 }
 
 Promise.resolve()
     .then(() => setup())
-    .then(() => cleanup("octicons", "icons"))
+    .then(() => cleanup("icons", "fonts", "octicons.css", "octicons.min.css"))
     .then(() => downloadIcons())
     .then(() => generateCSS())
     .then(() => minimizeCSS())

@@ -2,7 +2,7 @@
   "name": "octicons-css",
   "version": "19.5.0",
   "description": "GitHub Octicons now in CSS",
-  "type": "commonjs",
+  "style": "octicons.min.css",
   "scripts": {
     "clean": "rm -rf icons fonts octicons.css octicons.min.css",
     "lint": "eslint index.js",

@@ -5,8 +5,8 @@
   "style": "octicons.min.css",
   "scripts": {
     "clean": "rm -rf icons fonts octicons.css octicons.min.css",
-    "lint": "eslint index.js",
-    "generate": "node index.js"
+    "lint": "eslint generate.js",
+    "generate": "node generate.js"
   },
   "files": [
     "fonts",

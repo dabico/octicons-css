@@ -1,6 +1,6 @@
 {
   "name": "octicons-css",
-  "version": "19.5.0",
+  "version": "19.6.0",
   "description": "GitHub Octicons now in CSS",
   "style": "octicons.min.css",
   "scripts": {

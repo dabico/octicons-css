@@ -1,6 +1,6 @@
 {
   "name": "octicons-css",
-  "version": "19.7.0",
+  "version": "19.8.0",
   "description": "GitHub Octicons now in CSS",
   "style": "octicons.min.css",
   "scripts": {
@@ -38,7 +38,7 @@
     "axios-retry": "^3.7.0",
     "clean-css": "^5.3.2",
     "cli-progress": "^3.12.0",
-    "eslint": "^8.48.0",
+    "eslint": "^8.49.0",
     "fantasticon": "^2.0.0",
     "list-github-dir-content": "^3.0.0"
   }

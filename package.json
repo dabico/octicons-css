@@ -36,7 +36,7 @@
   "devDependencies": {
     "axios": "^1.7.2",
     "axios-retry": "^4.4.1",
-    "clean-css": "^5.3.2",
+    "clean-css": "^5.3.3",
     "cli-progress": "^3.12.0",
     "eslint": "^8.49.0",
     "fantasticon": "^2.0.0",

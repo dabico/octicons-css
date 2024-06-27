@@ -39,7 +39,7 @@
     "clean-css": "^5.3.3",
     "cli-progress": "^3.12.0",
     "eslint": "^8.49.0",
-    "fantasticon": "^2.0.0",
+    "fantasticon": "^3.0.0",
     "list-github-dir-content": "^3.0.0"
   }
 }

@@ -1,6 +1,6 @@
 const fs = require("node:fs/promises");
 const axios = require("axios");
-const retry = require("axios-retry");
+const retry = require("axios-retry").default;
 const ghls = require("list-github-dir-content");
 const CleanCSS = require("clean-css");
 const {Presets, SingleBar} = require("cli-progress");

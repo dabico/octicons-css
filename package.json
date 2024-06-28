@@ -7,6 +7,7 @@
   "scripts": {
     "clean": "rm -rf icons fonts octicons.css octicons.min.css",
     "lint": "eslint .",
+    "format": "eslint --fix .",
     "generate": "node generate.js"
   },
   "files": [
@@ -41,8 +42,11 @@
     "clean-css": "^5.3.3",
     "cli-progress": "^3.12.0",
     "eslint": "^9.5.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
     "fantasticon": "^3.0.0",
     "globals": "^15.6.0",
-    "list-github-dir-content": "^3.0.0"
+    "list-github-dir-content": "^3.0.0",
+    "prettier": "^3.3.2"
   }
 }

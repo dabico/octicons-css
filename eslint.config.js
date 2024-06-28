@@ -1,28 +1,30 @@
-const js = require("@eslint/js");
-const globals = require("globals");
+const {
+    configs: { recommended: jsConfigRecommended },
+} = require("@eslint/js");
+const { node, es2024 } = require("globals");
+const esLintConfigPrettier = require("eslint-config-prettier");
+const prettierRecommended = require("eslint-plugin-prettier/recommended");
 
 module.exports = [
-    js.configs.recommended,
+    jsConfigRecommended,
+    prettierRecommended,
+    esLintConfigPrettier,
     {
-        files: [ "**/*.js" ],
+        files: ["**/*.js"],
         languageOptions: {
             sourceType: "commonjs",
             ecmaVersion: 2024,
-            globals: {
-                ...globals.node,
-                ...globals.es2024,
-            }
+            globals: { ...node, ...es2024 },
         },
         rules: {
-            "semi": ["error", "always"],
-            "indent": ["error", 4],
-            "quotes": ["error", "double"],
-            "linebreak-style": ["error", "unix"],
-            "no-unused-vars": ["error", {
-                "argsIgnorePattern": "^_",
-                "varsIgnorePattern": "^_",
-                "caughtErrorsIgnorePattern": "^_",
-            }],
-        }
+            "no-unused-vars": [
+                "error",
+                {
+                    argsIgnorePattern: "^_",
+                    varsIgnorePattern: "^_",
+                    caughtErrorsIgnorePattern: "^_",
+                },
+            ],
+        },
     },
 ];

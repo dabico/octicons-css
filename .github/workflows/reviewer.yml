@@ -25,4 +25,4 @@ jobs:
       - name: Assign reviewers for major version updates
         if: ${{ steps.dependabot-metadata.outputs.update-type == 'version-update:semver-major' }}
         run: |
-          gh pr edit $PR_URL --add-reviewer "@me"
+          gh pr edit $PR_URL --add-reviewer dabico

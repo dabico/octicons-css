@@ -1,4 +1,4 @@
-name: "Generate CSS files and publish to NPM"
+name: 'Generate CSS files and publish to NPM'
 on:
   push:
     tags:

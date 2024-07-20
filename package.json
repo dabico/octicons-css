@@ -8,7 +8,8 @@
     "clean": "rimraf fonts octicons.css octicons.min.css",
     "lint": "eslint .",
     "format": "eslint --fix .",
-    "generate": "node generate.js"
+    "prebuild": "npm run clean",
+    "build": "node generate.js"
   },
   "files": [
     "fonts",

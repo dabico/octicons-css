@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: npm clean-install
       - name: Generate CSS files
-        run: npm run generate
+        run: npm run build
       - name: Prepare files
         run: |
           mkdir octicons

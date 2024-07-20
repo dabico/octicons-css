@@ -1,7 +1,4 @@
 const fs = require("node:fs/promises");
-const axios = require("axios");
-const retry = require("axios-retry").default;
-const ghls = require("list-github-dir-content");
 const CleanCSS = require("clean-css");
 const { Presets, SingleBar } = require("cli-progress");
 const { FontAssetType, OtherAssetType, generateFonts } = require("fantasticon");
@@ -21,13 +18,6 @@ const defaultFontConfig = {
     selector: null,
 };
 
-async function setup() {
-    retry(axios, {
-        retries: 5,
-        retryDelay: retry.exponentialDelay,
-    });
-}
-
 async function cleanup(...dirs) {
     console.info("Cleaning up directories...");
     const options = { hideCursor: true, format: "{bar} {percentage}% | ETA: {eta}s | {value}/{total}" };
@@ -43,40 +33,13 @@ async function cleanup(...dirs) {
     progressbar.stop();
 }
 
-async function downloadIcons() {
-    const [_, files] = await Promise.all([
-        fs.mkdir("./icons"),
-        ghls.viaTreeApi({
-            user: "primer",
-            repository: "octicons",
-            directory: "icons",
-        }),
-    ]);
-
-    console.info("Downloading icon SVGs...");
-    const options = { hideCursor: true, format: "{bar} {percentage}% | ETA: {eta}s | {value}/{total}" };
-    const progressbar = new SingleBar(options, Presets.shades_classic);
-    progressbar.start(files.length, 0);
-    await Promise.all(
-        files.map(async (svg) => {
-            const base = "https://raw.githubusercontent.com/primer/octicons/main";
-            const config = { responseType: "arraybuffer", timeout: 10 * 1000 };
-            const response = await axios.get(`${base}/${svg}`, config);
-            const buffer = Buffer.from(response.data);
-            await fs.writeFile(`./${svg}`, buffer);
-            progressbar.increment();
-        }),
-    );
-    progressbar.stop();
-}
-
 async function generateCSS() {
     await fs.mkdir("./fonts", { recursive: true });
     console.info("Generating CSS stylesheet...");
     const options = { hideCursor: true, format: "{bar} {percentage}% | ETA: {eta}s" };
     const progressbar = new SingleBar(options, Presets.shades_classic);
     progressbar.start(1, 0);
-    const inRoot = "./icons";
+    const inRoot = "./node_modules/@primer/octicons/build/svg";
     const outRoot = ".";
     const fontRoot = `${outRoot}/fonts`;
     await generateFonts({
@@ -105,9 +68,6 @@ async function minimizeCSS() {
 }
 
 Promise.resolve()
-    .then(() => setup())
-    .then(() => cleanup("icons", "fonts", "octicons.css", "octicons.min.css"))
-    .then(() => downloadIcons())
+    .then(() => cleanup("fonts", "octicons.css", "octicons.min.css"))
     .then(() => generateCSS())
-    .then(() => minimizeCSS())
-    .then(() => cleanup("icons"));
+    .then(() => minimizeCSS());

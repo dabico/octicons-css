@@ -13,7 +13,7 @@ export default [
     jsConfigsRecommended,
     prettierConfigsRecommended,
     {
-        files: ["**/*.js"],
+        files: ["**/*.js", "octicons-css"],
         languageOptions: {
             sourceType: "module",
             ecmaVersion: 2024,

@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "format": "eslint --fix .",
     "prebuild": "npm run clean",
-    "build": "node generate.js"
+    "build": "node octicons-css"
   },
   "files": [
     "fonts",

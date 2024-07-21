@@ -1,22 +1,29 @@
-const {
-    configs: { recommended: jsConfigRecommended },
-} = require("@eslint/js");
-const { node, es2024 } = require("globals");
-const esLintConfigPrettier = require("eslint-config-prettier");
-const prettierRecommended = require("eslint-plugin-prettier/recommended");
+import js from "@eslint/js";
+import globals from "globals";
+import recommendedConfig from "eslint-plugin-prettier/recommended";
+import eslintConfigPrettier from "eslint-config-prettier";
 
-module.exports = [
-    jsConfigRecommended,
-    prettierRecommended,
-    esLintConfigPrettier,
+const { rules: prettierRules } = eslintConfigPrettier;
+const prettierConfigsRecommended = recommendedConfig;
+const {
+    configs: { recommended: jsConfigsRecommended },
+} = js;
+
+export default [
+    jsConfigsRecommended,
+    prettierConfigsRecommended,
     {
         files: ["**/*.js"],
         languageOptions: {
-            sourceType: "commonjs",
+            sourceType: "module",
             ecmaVersion: 2024,
-            globals: { ...node, ...es2024 },
+            globals: {
+                ...globals.node,
+                ...globals.es2024,
+            },
         },
         rules: {
+            ...prettierRules,
             "no-unused-vars": [
                 "error",
                 {

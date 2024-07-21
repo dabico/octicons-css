@@ -1,6 +1,6 @@
-const fs = require("node:fs/promises");
-const CleanCSS = require("clean-css");
-const { FontAssetType, OtherAssetType, generateFonts } = require("fantasticon");
+import CleanCSS from "clean-css";
+import { mkdir, writeFile } from "node:fs/promises";
+import { FontAssetType, OtherAssetType, generateFonts } from "fantasticon";
 
 const fontOptions = {
     tag: "i",
@@ -19,7 +19,7 @@ const fontOptions = {
 
 async function generateCSS() {
     const fontRoot = "./fonts";
-    await fs.mkdir(fontRoot, { recursive: true });
+    await mkdir(fontRoot, { recursive: true });
     await generateFonts({
         inputDir: "./node_modules/@primer/octicons/build/svg",
         outputDir: ".",
@@ -34,7 +34,7 @@ async function generateCSS() {
 
 async function minimizeCSS() {
     const result = await new CleanCSS({ returnPromise: true }).minify(["./octicons.css"]);
-    await fs.writeFile("./octicons.min.css", result.styles, { flag: "w+" });
+    await writeFile("./octicons.min.css", result.styles, { flag: "w+" });
 }
 
 Promise.resolve().then(generateCSS).then(minimizeCSS);

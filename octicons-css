@@ -1,0 +1,34 @@
+#!/usr/bin/env node
+import CleanCSS from "clean-css";
+import { mkdir, writeFile } from "node:fs/promises";
+import { FontAssetType, generateFonts, OtherAssetType } from "fantasticon";
+
+await mkdir("./fonts", { recursive: true });
+await generateFonts({
+    inputDir: "./node_modules/@primer/octicons/build/svg",
+    outputDir: ".",
+    name: "octicons",
+    fontTypes: [
+        FontAssetType.EOT,
+        FontAssetType.WOFF2,
+        FontAssetType.WOFF,
+    ],
+    assetTypes: [OtherAssetType.CSS],
+    pathOptions: {
+        woff: `./fonts/octicons.woff`,
+        woff2: `./fonts/octicons.woff2`,
+        eot: `./fonts/octicons.eot`,
+    },
+    fontHeight: 300,
+    descent: undefined,
+    normalize: true,
+    round: undefined,
+    selector: null,
+    tag: "i",
+    templates: { css: "./octicons.css.hbs" },
+    fontsUrl: "./fonts",
+    prefix: "octicon",
+});
+
+const { styles } = await new CleanCSS({ returnPromise: true }).minify(["./octicons.css"]);
+await writeFile("./octicons.min.css", styles, { flag: "w+" });

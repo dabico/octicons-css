@@ -1,14 +1,15 @@
 {
   "name": "octicons-css",
   "version": "19.11.0",
-  "type": "commonjs",
+  "type": "module",
   "description": "GitHub Octicons now in CSS",
   "style": "octicons.min.css",
   "scripts": {
-    "clean": "rm -rf icons fonts octicons.css octicons.min.css",
+    "clean": "rimraf fonts octicons.css octicons.min.css",
     "lint": "eslint .",
     "format": "eslint --fix .",
-    "generate": "node generate.js"
+    "prebuild": "npm run clean",
+    "build": "node octicons-css"
   },
   "files": [
     "fonts",
@@ -36,17 +37,15 @@
     "url": "https://github.com/dabico/octicons-css/issues"
   },
   "devDependencies": {
-    "@eslint/js": "^9.5.0",
-    "axios": "^1.7.2",
-    "axios-retry": "^4.4.1",
+    "@eslint/js": "^9.7.0",
+    "@primer/octicons": "^19.11.0",
     "clean-css": "^5.3.3",
-    "cli-progress": "^3.12.0",
-    "eslint": "^9.5.0",
+    "eslint": "^9.7.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-prettier": "^5.2.1",
     "fantasticon": "^3.0.0",
-    "globals": "^15.6.0",
-    "list-github-dir-content": "^4.0.2",
-    "prettier": "^3.3.2"
+    "globals": "^15.8.0",
+    "prettier": "^3.3.3",
+    "rimraf": "^6.0.1"
   }
 }

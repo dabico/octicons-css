@@ -3,7 +3,7 @@ on:
   push:
     tags:
       - 'v*'
-  workflow_dispatch:
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -13,12 +13,12 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           registry-url: 'https://registry.npmjs.org'
       - name: Install dependencies
         run: npm clean-install
       - name: Generate CSS files
-        run: npm run generate
+        run: npm run build
       - name: Prepare files
         run: |
           mkdir octicons
@@ -39,5 +39,3 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: octicons.tar.gz
-      - name: Clean up generated files
-        run: npm run clean

@@ -3,7 +3,19 @@ const CleanCSS = require("clean-css");
 const { Presets, SingleBar } = require("cli-progress");
 const { FontAssetType, OtherAssetType, generateFonts } = require("fantasticon");
 
-const defaultFontConfig = {
+class ProgressBar extends SingleBar {
+    constructor() {
+        super(
+            {
+                format: "{bar} {percentage}% | ETA: {eta}s",
+                hideCursor: true,
+            },
+            Presets.shades_classic,
+        );
+    }
+}
+
+const fontOptions = {
     tag: "i",
     name: "octicons",
     prefix: "octicon",
@@ -18,39 +30,21 @@ const defaultFontConfig = {
     selector: null,
 };
 
-async function cleanup(...dirs) {
-    console.info("Cleaning up directories...");
-    const options = { hideCursor: true, format: "{bar} {percentage}% | ETA: {eta}s | {value}/{total}" };
-    const progressbar = new SingleBar(options, Presets.shades_classic);
-    progressbar.start(dirs.length, 0);
-    await Promise.all(
-        dirs.map(async (dir) => {
-            const options = { recursive: true, force: true };
-            await fs.rm(`./${dir}`, options);
-            progressbar.increment();
-        }),
-    );
-    progressbar.stop();
-}
-
 async function generateCSS() {
-    await fs.mkdir("./fonts", { recursive: true });
+    const fontRoot = "./fonts";
+    await fs.mkdir(fontRoot, { recursive: true });
     console.info("Generating CSS stylesheet...");
-    const options = { hideCursor: true, format: "{bar} {percentage}% | ETA: {eta}s" };
-    const progressbar = new SingleBar(options, Presets.shades_classic);
+    const progressbar = new ProgressBar();
     progressbar.start(1, 0);
-    const inRoot = "./node_modules/@primer/octicons/build/svg";
-    const outRoot = ".";
-    const fontRoot = `${outRoot}/fonts`;
     await generateFonts({
-        inputDir: inRoot,
-        outputDir: outRoot,
+        inputDir: "./node_modules/@primer/octicons/build/svg",
+        outputDir: ".",
         pathOptions: {
             woff: `${fontRoot}/octicons.woff`,
             woff2: `${fontRoot}/octicons.woff2`,
             eot: `${fontRoot}/octicons.eot`,
         },
-        ...defaultFontConfig,
+        ...fontOptions,
     });
     progressbar.increment();
     progressbar.stop();
@@ -58,8 +52,7 @@ async function generateCSS() {
 
 async function minimizeCSS() {
     console.info("Minimizing CSS stylesheet...");
-    const options = { hideCursor: true, format: "{bar} {percentage}% | ETA: {eta}s" };
-    const progressbar = new SingleBar(options, Presets.shades_classic);
+    const progressbar = new ProgressBar();
     progressbar.start(1, 0);
     const result = await new CleanCSS({ returnPromise: true }).minify(["./octicons.css"]);
     await fs.writeFile("./octicons.min.css", result.styles, { flag: "w+" });
@@ -67,7 +60,4 @@ async function minimizeCSS() {
     progressbar.stop();
 }
 
-Promise.resolve()
-    .then(() => cleanup("fonts", "octicons.css", "octicons.min.css"))
-    .then(() => generateCSS())
-    .then(() => minimizeCSS());
+Promise.resolve().then(generateCSS).then(minimizeCSS);

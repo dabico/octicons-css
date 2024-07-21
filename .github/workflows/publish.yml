@@ -39,5 +39,3 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: octicons.tar.gz
-      - name: Clean up generated files
-        run: npm run clean

@@ -37,7 +37,7 @@
     "url": "https://github.com/dabico/octicons-css/issues"
   },
   "devDependencies": {
-    "@eslint/js": "^9.16.0",
+    "@eslint/js": "^9.17.0",
     "@primer/octicons": "^19.14.0",
     "clean-css": "^5.3.3",
     "eslint": "^9.16.0",

@@ -15,6 +15,7 @@ jobs:
         with:
           stale-issue-label: 'stale'
           exempt-issue-labels: 'bug'
+          exempt-all-assignees: true
           days-before-issue-stale: 30
           days-before-issue-close: 14
           days-before-pr-stale: -1

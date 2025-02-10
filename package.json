@@ -45,7 +45,7 @@
     "eslint-plugin-prettier": "^5.2.3",
     "fantasticon": "^3.0.0",
     "globals": "^15.14.0",
-    "prettier": "^3.4.2",
+    "prettier": "^3.5.0",
     "rimraf": "^6.0.1"
   }
 }

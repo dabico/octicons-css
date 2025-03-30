@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 import CleanCSS from "clean-css";
-import { mkdir, writeFile } from "node:fs/promises";
+import { minify as minifyHTML } from "html-minifier-terser";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { FontAssetType, generateFonts, OtherAssetType } from "fantasticon";
 
 await mkdir("./fonts", { recursive: true });
@@ -39,3 +40,11 @@ await generateFonts({
 
 const { styles } = await new CleanCSS({ returnPromise: true }).minify(["./octicons.css"]);
 await writeFile("./octicons.min.css", styles, { flag: "w+" });
+const html = await readFile("./octicons.html", "utf-8")
+const preview = await minifyHTML(html, {
+    collapseWhitespace: true,
+    minifyCSS: true,
+    minifyJS: true,
+    removeComments: true,
+})
+await writeFile("./octicons.html", preview, { flag: "w+" })

@@ -5,7 +5,7 @@
   "description": "GitHub Octicons now in CSS",
   "style": "octicons.min.css",
   "scripts": {
-    "clean": "rimraf fonts octicons.css octicons.min.css",
+    "clean": "rimraf fonts octicons.css octicons.html octicons.min.css",
     "lint": "eslint .",
     "format": "eslint --fix .",
     "prebuild": "npm run clean",

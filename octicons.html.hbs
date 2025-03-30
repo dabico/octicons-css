@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Octicons CSS Preview</title>
+        <link rel="stylesheet" href="octicons.min.css">
+        <style>
+            :root {
+                --default-background-color: #f6f8fa;
+                --default-border-color: #e1e4e8;
+                --default-border-radius: 6px;
+                --default-color: #24292e;
+                --default-padding: 16px;
+            }
+
+            body {
+                color: var(--default-color);
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+                line-height: 1.5;
+                margin: 0 auto;
+                max-width: 1200px;
+                padding: var(--default-padding);
+            }
+
+            pre {
+                background-color: var(--default-background-color);
+                border-radius: var(--default-border-radius);
+                border: 1px solid var(--default-border-color);
+                overflow-x: auto;
+                padding: calc(var(--default-padding) / 2);
+                white-space: pre;
+            }
+
+            h1, h2 {
+                border-bottom: 1px solid color-mix(in srgb, var(--default-border-color), #000000 25%);
+                padding-bottom: 0.3em;
+            }
+
+            .container {
+                display: grid;
+                gap: 16px;
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                padding: var(--default-padding);
+            }
+
+            .icon-card {
+                border-radius: var(--default-border-radius);
+                border: 1px solid var(--default-border-color);
+                padding: var(--default-padding);
+                text-align: center;
+            }
+
+            .icon-name {
+                font-size: 14px;
+                margin-top: 8px;
+            }
+
+            .icon-code {
+                background-color: var(--default-background-color);
+                border-radius: calc(var(--default-border-radius) / 2);
+                color: color-mix(in srgb, var(--default-background-color), #000000 50%);
+                display: block;
+                font-size: 12px;
+                margin-top: 8px;
+                overflow-wrap: break-word;
+                padding: calc(var(--default-padding) / 4);
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Octicons CSS Preview</h1>
+        <p>
+            This is a preview of all available icons in
+            <a href="https://github.com/dabico/octicons-css" target="_blank">Octicons CSS</a>.
+        </p>
+        <h2>Usage</h2>
+        <p>Include the stylesheet in your webpage:</p>
+        <pre><code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/octicons-css/octicons.min.css"&gt;</code></pre>
+        <p>Then use the icons with the <code>octicon</code> class and the specific icon class:</p>
+        <pre><code>&lt;i class="octicon octicon-alert-16"&gt;&lt;/i&gt;</code></pre>
+        <h2>Available Icons</h2>
+        <div class="container">
+            {{# each codepoints }}
+            <div class="icon-card">
+                <i class="{{ ../prefix }} {{ ../prefix }}-{{ @key }} icon"></i>
+                <div class="icon-name">{{ ../prefix }}-{{ @key }}</div>
+                <code class="icon-code">&lt;i class="{{ ../prefix }} {{ ../prefix }}-{{ @key }}"&gt;&lt;/i&gt;</code>
+            </div>
+            {{/ each }}
+        </div>
+    </body>
+</html>

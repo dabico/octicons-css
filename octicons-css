@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 import CleanCSS from "clean-css";
 import { mkdir, writeFile } from "node:fs/promises";
 import { FontAssetType, generateFonts, OtherAssetType } from "fantasticon";
@@ -13,11 +14,14 @@ await generateFonts({
         FontAssetType.WOFF2,
         FontAssetType.WOFF,
     ],
-    assetTypes: [OtherAssetType.CSS],
+    assetTypes: [
+        OtherAssetType.CSS,
+        OtherAssetType.HTML,
+    ],
     pathOptions: {
-        woff: `./fonts/octicons.woff`,
-        woff2: `./fonts/octicons.woff2`,
-        eot: `./fonts/octicons.eot`,
+        woff: "./fonts/octicons.woff",
+        woff2: "./fonts/octicons.woff2",
+        eot: "./fonts/octicons.eot",
     },
     fontHeight: 300,
     descent: undefined,
@@ -25,7 +29,10 @@ await generateFonts({
     round: undefined,
     selector: null,
     tag: "i",
-    templates: { css: "./octicons.css.hbs" },
+    templates: {
+        css: "./octicons.css.hbs",
+        html: "./octicons.html.hbs"
+    },
     fontsUrl: "./fonts",
     prefix: "octicon",
 });

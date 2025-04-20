@@ -3,7 +3,7 @@
 import CleanCSS from "clean-css";
 import { minify as minifyHTML } from "html-minifier-terser";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
-import { FontAssetType, generateFonts, OtherAssetType } from "fantasticon";
+import { FontAssetType, OtherAssetType, generateFonts } from "@twbs/fantasticon";
 
 await mkdir("./fonts", { recursive: true });
 await generateFonts({

@@ -42,7 +42,7 @@
     "@twbs/fantasticon": "^3.1.0",
     "clean-css": "^5.3.3",
     "eslint": "^9.31.0",
-    "eslint-config-prettier": "^10.1.5",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.1",
     "globals": "^16.3.0",
     "html-minifier-terser": "^7.2.0",

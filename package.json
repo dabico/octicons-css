@@ -41,7 +41,7 @@
     "@primer/octicons": "^19.15.4",
     "@twbs/fantasticon": "^3.1.0",
     "clean-css": "^5.3.3",
-    "eslint": "^9.31.0",
+    "eslint": "^9.32.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.3",
     "globals": "^16.3.0",

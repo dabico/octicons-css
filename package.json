@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
-    "@primer/octicons": "^19.18.0",
+    "@primer/octicons": "^19.18.1",
     "@twbs/fantasticon": "^3.1.0",
     "clean-css": "^5.3.3",
     "eslint": "^9.36.0",
